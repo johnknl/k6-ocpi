@@ -1,0 +1,14 @@
+{
+  "headers": {
+    "accept": "application/json"
+  },
+  "method": "GET",
+  "url": {
+    "path": "/locations/{country_code}/{party_id}/{location_id}",
+    "pathParams": {
+      "country_code": "NL",
+      "location_id": "1",
+      "party_id": "TNM"
+    }
+  }
+}

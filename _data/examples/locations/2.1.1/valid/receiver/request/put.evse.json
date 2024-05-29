@@ -1,0 +1,38 @@
+{
+  "body": {
+    "capabilities": [
+      "RESERVABLE"
+    ],
+    "connectors": [
+      {
+        "amperage": 16,
+        "format": "SOCKET",
+        "id": "1",
+        "last_updated": "2015-06-29T20:39:09Z",
+        "power_type": "AC_3_PHASE",
+        "standard": "IEC_62196_T2",
+        "tariff_id": "14",
+        "voltage": 220
+      }
+    ],
+    "evse_id": "BE-BEC-E041503003",
+    "floor_level": "-1",
+    "last_updated": "2015-06-29T20:39:09Z",
+    "physical_reference": "3",
+    "status": "AVAILABLE",
+    "uid": "3256"
+  },
+  "headers": {
+    "accept": "application/json"
+  },
+  "method": "PUT",
+  "url": {
+    "path": "/locations/{country_code}/{party_id}/{location_id}/{evse_uid}",
+    "pathParams": {
+      "country_code": "NL",
+      "evse_uid": "3257",
+      "location_id": "12",
+      "party_id": "TNM"
+    }
+  }
+}

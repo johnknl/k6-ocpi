@@ -1,0 +1,26 @@
+{
+  "body": {
+    "status_code": 2000,
+    "timestamp": "2024-05-31T00:00:00Z"
+  },
+  "headers": {
+    "content-type": "application/json",
+    "x-correlation-id": "7654321",
+    "x-request-id": "1234567"
+  },
+  "request": {
+    "headers": {
+      "accept": "application/json"
+    },
+    "method": "DELETE",
+    "url": {
+      "path": "/tariffs/NL/TNM/12",
+      "pathParams": {
+        "country_code": "NL",
+        "party_id": "TNM",
+        "tariff_id": "12"
+      }
+    }
+  },
+  "status": 200
+}

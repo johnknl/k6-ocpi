@@ -1,0 +1,9 @@
+{
+  "amperage": 16,
+  "format": "SOCKET",
+  "id": "1",
+  "last_updated": "2015-06-29T20:39:09Z",
+  "power_type": "AC_3_PHASE",
+  "standard": "IEC_62196_T2",
+  "voltage": 220
+}

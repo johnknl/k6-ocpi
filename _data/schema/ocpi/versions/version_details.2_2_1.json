@@ -1,0 +1,65 @@
+{
+  "$ref": "#/definitions/ocpi.2_2_1.version_details",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "ocpi.2_2_1.version_details": {
+      "additionalProperties": false,
+      "properties": {
+        "endpoints": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "identifier": {
+                "enum": [
+                  "cdrs",
+                  "chargingprofiles",
+                  "commands",
+                  "credentials",
+                  "hubclientinfo",
+                  "locations",
+                  "sessions",
+                  "tariffs",
+                  "tokens"
+                ],
+                "type": "string"
+              },
+              "role": {
+                "enum": [
+                  "SENDER",
+                  "RECEIVER"
+                ],
+                "type": "string"
+              },
+              "url": {
+                "format": "uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "identifier",
+              "role",
+              "url"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "version": {
+          "enum": [
+            "2.0",
+            "2.1",
+            "2.1.1",
+            "2.2.1"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "endpoints"
+      ],
+      "type": "object"
+    }
+  }
+}

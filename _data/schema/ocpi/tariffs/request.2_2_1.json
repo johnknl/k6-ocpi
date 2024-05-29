@@ -1,0 +1,92 @@
+{
+  ".receiverPathParams": {
+    "additionalProperties": false,
+    "minProperties": 3,
+    "properties": {
+      "country_code": {
+        "$ref": "../common.json#/definitions/country_code"
+      },
+      "party_id": {
+        "$ref": "../common.json#/definitions/party_id"
+      },
+      "tariff_id": {
+        "maxLength": 36,
+        "minLength": 1,
+        "type": "string"
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "else": {
+        "oneOf": [
+          {
+            "else": false,
+            "if": {
+              "$ref": "../common.json#/definitions/routes/receiver/get"
+            }
+          },
+          {
+            "else": false,
+            "if": {
+              "$ref": "../common.json#/definitions/routes/receiver/put"
+            },
+            "then": {
+              "properties": {
+                "body": {
+                  "$ref": "./ocpi.2_2_1.tariff.json"
+                }
+              }
+            }
+          },
+          {
+            "else": false,
+            "if": {
+              "$ref": "../common.json#/definitions/routes/receiver/delete"
+            }
+          }
+        ],
+        "properties": {
+          "url": {
+            "properties": {
+              "pathParams": {
+                "additionalProperties": false,
+                "minProperties": 3,
+                "properties": {
+                  "country_code": {
+                    "$ref": "../common.json#/definitions/country_code"
+                  },
+                  "party_id": {
+                    "$ref": "../common.json#/definitions/party_id"
+                  },
+                  "tariff_id": {
+                    "maxLength": 36,
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "required": [
+              "pathParams"
+            ]
+          }
+        }
+      },
+      "if": {
+        "$ref": "../common.json#/definitions/routes/sender/get"
+      },
+      "then": {
+        "properties": {
+          "url": {
+            "properties": {
+              "query": {
+                "$ref": "../common.json#/definitions/senderQuery"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "k6-ocpi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc --outDir dist",
+    "watch": "rm -rf dist && tsc --outDir dist --watch"
+  },
+  "author": "John Kleijn",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@types/k6": "^0.51.0",
+    "@types/node": "^20.12.12"
+  }
+}

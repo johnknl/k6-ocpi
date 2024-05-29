@@ -1,0 +1,135 @@
+{
+  "else": {
+    "oneOf": [
+      {
+        "else": false,
+        "if": {
+          "properties": {
+            "request": {
+              "$ref": "../common.json#/definitions/routes/receiver/put"
+            }
+          }
+        }
+      },
+      {
+        "else": false,
+        "if": {
+          "properties": {
+            "request": {
+              "$ref": "../common.json#/definitions/routes/receiver/patch"
+            }
+          }
+        }
+      },
+      {
+        "else": false,
+        "if": {
+          "properties": {
+            "request": {
+              "properties": {
+                "method": {
+                  "const": "GET"
+                }
+              }
+            }
+          }
+        },
+        "then": {
+          "else": {
+            "else": {
+              "properties": {
+                "body": {
+                  "properties": {
+                    "data": {
+                      "$ref": "./ocpi.2_1_1.location.json"
+                    }
+                  }
+                }
+              }
+            },
+            "if": {
+              "properties": {
+                "request": {
+                  "properties": {
+                    "url": {
+                      "properties": {
+                        "pathParams": {
+                          "required": [
+                            "evse_uid"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "body": {
+                  "properties": {
+                    "data": {
+                      "$ref": "./ocpi.2_1_1.location.json#/definitions/EVSE"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "if": {
+            "properties": {
+              "request": {
+                "properties": {
+                  "url": {
+                    "properties": {
+                      "pathParams": {
+                        "required": [
+                          "connector_id"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "body": {
+                "properties": {
+                  "data": {
+                    "$ref": "./ocpi.2_1_1.location.json#/definitions/Connector"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "if": {
+    "properties": {
+      "request": {
+        "$ref": "../common.json#/definitions/routes/sender/get"
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "body": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "./ocpi.2_1_1.location.json"
+            },
+            "type": "array"
+          }
+        }
+      },
+      "headers": {
+        "$ref": "../common.json#/definitions/paginationHeaders"
+      }
+    }
+  }
+}

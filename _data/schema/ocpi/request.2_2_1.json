@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "../generic/request.json"
+    },
+    {
+      "oneOf": [
+        {
+          "else": false,
+          "if": {
+            "properties": {
+              "url": {
+                "properties": {
+                  "path": {
+                    "pattern": "/tariffs/?"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "$ref": "./tariffs/request.2_2_1.json#"
+          }
+        },
+        {
+          "else": false,
+          "if": {
+            "properties": {
+              "url": {
+                "properties": {
+                  "path": {
+                    "pattern": "/locations/?"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "$ref": "./locations/request.2_2_1.json#"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "body": {
+    "status_code": 2000,
+    "timestamp": "2024-05-31T00:00:00Z"
+  },
+  "headers": {
+    "content-type": "application/json",
+    "x-correlation-id": "7654321",
+    "x-request-id": "1234567"
+  },
+  "request": {
+    "headers": {
+      "accept": "application/json"
+    },
+    "method": "GET",
+    "url": {
+      "path": "/locations/{country_code}/{party_id}/{location_id}",
+      "pathParams": {
+        "country_code": "NL",
+        "location_id": "404",
+        "party_id": "TNM"
+      }
+    }
+  },
+  "status": 404
+}

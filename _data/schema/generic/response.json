@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "body": {
+      "type": "object"
+    },
+    "headers": {
+      "properties": {
+        "content-type": {
+          "const": "application/json"
+        }
+      },
+      "type": "object"
+    },
+    "status": {
+      "max": 999,
+      "min": 100,
+      "type": "integer"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,154 @@
+{
+  "definitions": {
+    "allow": {
+      "delete": {
+        "else": false,
+        "if": {
+          "properties": {
+            "request": {
+              "$ref": "#/definitions/routes/receiver/delete"
+            }
+          }
+        }
+      },
+      "patch": {
+        "else": false,
+        "if": {
+          "properties": {
+            "request": {
+              "$ref": "#/definitions/routes/receiver/patch"
+            }
+          }
+        }
+      },
+      "post": {
+        "else": false,
+        "if": {
+          "properties": {
+            "request": {
+              "$ref": "#/definitions/routes/receiver/post"
+            }
+          }
+        }
+      },
+      "put": {
+        "else": false,
+        "if": {
+          "properties": {
+            "request": {
+              "$ref": "#/definitions/routes/receiver/put"
+            }
+          }
+        }
+      }
+    },
+    "country_code": {
+      "maxLength": 2,
+      "minLength": 2,
+      "type": "string"
+    },
+    "paginationHeaders": {
+      "properties": {
+        "x-limit": {
+          "pattern": "[0-9]+",
+          "type": "string"
+        },
+        "x-request-id": {
+          "type": "string"
+        },
+        "x-total-count": {
+          "pattern": "[0-9]+",
+          "type": "string"
+        }
+      }
+    },
+    "party_id": {
+      "maxLength": 3,
+      "minLength": 1,
+      "type": "string"
+    },
+    "routes": {
+      "receiver": {
+        "delete": {
+          "properties": {
+            "method": {
+              "const": "DELETE"
+            }
+          }
+        },
+        "get": {
+          "properties": {
+            "method": {
+              "const": "GET"
+            },
+            "url": {
+              "properties": {
+                "pathParams": {
+                  "minProperties": 1
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "properties": {
+            "method": {
+              "const": "PATCH"
+            }
+          }
+        },
+        "post": {
+          "properties": {
+            "method": {
+              "const": "POST"
+            }
+          }
+        },
+        "put": {
+          "properties": {
+            "method": {
+              "const": "PUT"
+            }
+          }
+        }
+      },
+      "sender": {
+        "get": {
+          "properties": {
+            "method": {
+              "const": "GET"
+            },
+            "url": {
+              "properties": {
+                "pathParams": {
+                  "maxProperties": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "senderQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "date_from": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "date_to": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "limit": {
+          "min": 1,
+          "type": "integer"
+        },
+        "offset": {
+          "min": 0,
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

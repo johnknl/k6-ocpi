@@ -1,0 +1,30 @@
+{
+  "body": {
+    "status_code": 1000,
+    "timestamp": "2024-05-31T00:00:00Z"
+  },
+  "headers": {
+    "content-type": "application/json",
+    "x-correlation-id": "7654321",
+    "x-request-id": "1234567"
+  },
+  "request": {
+    "body": {
+      "address": "F.Rooseveltlaan 3B",
+      "last_updated": "2015-06-29T20:39:09Z"
+    },
+    "headers": {
+      "accept": "application/json"
+    },
+    "method": "PATCH",
+    "url": {
+      "path": "/locations/{country_code}/{party_id}/{location_id}",
+      "pathParams": {
+        "country_code": "NL",
+        "location_id": "12",
+        "party_id": "TNM"
+      }
+    }
+  },
+  "status": 200
+}

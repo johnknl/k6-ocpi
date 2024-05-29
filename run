@@ -1,0 +1,99 @@
+#!/bin/sh
+set -eu
+
+# shellcheck disable=SC2012
+usage() {
+  printf "Usage: %s [run options] [profile=default] [script options] -- [k6 options]
+
+Run options:
+  --build     Build k6 with extensions before running the script.
+  --no-tsc    Skip TypeScript compilation (will always skip if 'tsc' or 'npm' are not available).
+  --no-list   Skip generating test file list (will always skip if 'node' or 'npm' are not available).
+
+Default profiles:
+  default           Runs all 'default.test.js' scripts exactly once (1 VU, 1 iteration).
+  default/stress    Runs same scripts as 'default' many times concurrently.
+
+Additional profiles can be found / placed in the \`profiles\` directory.
+
+Script options:
+  --filter           Filter scenarios by name (matches partials, eg 'loc').
+  --stop-on-failure  Abort k6 on first failed check (best effort).
+                     This will also add schema validation messages to
+                     k6 abort message.
+  --no-checks        Don't do any response checks (implies --no-validate).
+  --no-validate      Skip request and response schema validation 
+                     (reduces client side load).
+
+K6 options:
+  Refer to ./bin/k6 run -h for all available options.
+
+" "$0"
+
+}
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+  --build)
+    shift
+    if hash make 2>/dev/null; then
+      make bin/k6 -B
+    fi
+    ;;
+  --no-tsc)
+    shift
+    NO_TSC="true"
+    ;;
+  --no-list)
+    shift
+    NO_LIST="true"
+    ;;
+  -h)
+    usage
+    exit 0
+    ;;
+  --*)
+    break
+    ;;
+  *)
+    export PROFILE="$1"
+    shift
+    break
+    ;;
+  esac
+done
+
+if [ -z "${PROFILE:-}" ]; then
+  export PROFILE="default"
+fi
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+  --)
+    shift
+    K6_ARGS="$*"
+    break
+    ;;
+  *)
+    SCRIPT_ARGS="${SCRIPT_ARGS:-} $1"
+    shift
+    ;;
+  esac
+done
+
+export ARGS="${SCRIPT_ARGS:-}"
+
+if [ "${NO_TSC:-}" != "true" ]; then
+  if hash tsc 2>/dev/null && hash npm 2>/dev/null; then
+    npm run build
+  fi
+fi
+
+if [ "${NO_LIST:-}" != "true" ]; then
+  if hash node 2>/dev/null; then
+    node ./dist/utils/node/generateFileList.js
+  fi
+fi
+
+# shellcheck disable=SC2086
+exec bin/k6 run ${K6_ARGS:-} ./dist/main.js

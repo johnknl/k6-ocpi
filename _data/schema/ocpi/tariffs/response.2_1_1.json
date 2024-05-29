@@ -1,0 +1,57 @@
+{
+  "else": {
+    "oneOf": [
+      {
+        "else": false,
+        "if": {
+          "properties": {
+            "request": {
+              "$ref": "../common.json#/definitions/routes/receiver/get"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "body": {
+              "properties": {
+                "data": {
+                  "$ref": "./ocpi.2_1_1.tariff.json"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "$ref": "../common.json#/definitions/allow/put"
+      },
+      {
+        "$ref": "../common.json#/definitions/allow/delete"
+      }
+    ]
+  },
+  "if": {
+    "properties": {
+      "request": {
+        "$ref": "../common.json#/definitions/routes/sender/get"
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "body": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "./ocpi.2_1_1.tariff.json"
+            },
+            "type": "array"
+          }
+        }
+      },
+      "headers": {
+        "$ref": "../common.json#/definitions/paginationHeaders"
+      }
+    }
+  }
+}

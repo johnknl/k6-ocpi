@@ -1,0 +1,283 @@
+{
+  "$ref": "#/definitions/ocpi.2_2.connector.partial",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "ocpi.2_2.connector.partial": {
+      "additionalProperties": false,
+      "properties": {
+        "format": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "enum": [
+                    "SOCKET",
+                    "CABLE"
+                  ],
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "id": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "maxLength": 36,
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "last_updated": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "format": "date-time",
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "max_amperage": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "max_electric_power": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "anyOf": [
+                    {
+                      "not": {}
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "max_voltage": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "power_type": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "enum": [
+                    "AC_1_PHASE",
+                    "AC_3_PHASE",
+                    "DC"
+                  ],
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "standard": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "enum": [
+                    "CHADEMO",
+                    "DOMESTIC_A",
+                    "DOMESTIC_B",
+                    "DOMESTIC_C",
+                    "DOMESTIC_D",
+                    "DOMESTIC_E",
+                    "DOMESTIC_F",
+                    "DOMESTIC_G",
+                    "DOMESTIC_H",
+                    "DOMESTIC_I",
+                    "DOMESTIC_J",
+                    "DOMESTIC_K",
+                    "DOMESTIC_L",
+                    "IEC_60309_2_single_16",
+                    "IEC_60309_2_three_16",
+                    "IEC_60309_2_three_32",
+                    "IEC_60309_2_three_64",
+                    "IEC_62196_T1",
+                    "IEC_62196_T1_COMBO",
+                    "IEC_62196_T2",
+                    "IEC_62196_T2_COMBO",
+                    "IEC_62196_T3A",
+                    "IEC_62196_T3C",
+                    "PANTOGRAPH_BOTTOM_UP",
+                    "PANTOGRAPH_TOP_DOWN",
+                    "TESLA_R",
+                    "TESLA_S"
+                  ],
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tariff_ids": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "anyOf": [
+                    {
+                      "not": {}
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "anyOf": [
+                              {
+                                "not": {}
+                              },
+                              {
+                                "anyOf": [
+                                  {
+                                    "maxLength": 36,
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "terms_and_conditions": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "anyOf": [
+                    {
+                      "not": {}
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    }
+  }
+}

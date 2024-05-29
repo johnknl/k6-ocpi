@@ -1,0 +1,19 @@
+{
+  "server": {
+    "host": "localhost:8080",
+    "scheme": "http"
+  },
+  "ocpi": {
+    "tokens": {
+      "cpo": "NET_CPO_TOKEN",
+      "emsp": "NET_EMSP_TOKEN"
+    },
+    "version": "2.1.1",
+    "basePath": "/api/ocpi"
+  },
+  "ids": {
+    "tariffs": {
+      "min": 1
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "format": "SOCKET",
+  "id": "1",
+  "last_updated": "2015-06-29T20:39:09Z",
+  "max_amperage": 16,
+  "max_voltage": 220,
+  "power_type": "AC_3_PHASE",
+  "standard": "IEC_62196_T2",
+  "tariff_ids": [
+    "13"
+  ]
+}

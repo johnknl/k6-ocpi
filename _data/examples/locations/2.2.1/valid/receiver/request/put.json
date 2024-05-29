@@ -1,0 +1,99 @@
+{
+  "body": {
+    "address": "F.Rooseveltlaan 3A",
+    "city": "Gent",
+    "coordinates": {
+      "latitude": "51.047599",
+      "longitude": "3.729944"
+    },
+    "country": "BEL",
+    "country_code": "BE",
+    "evses": [
+      {
+        "capabilities": [
+          "RESERVABLE"
+        ],
+        "connectors": [
+          {
+            "format": "CABLE",
+            "id": "1",
+            "last_updated": "2015-03-16T10:10:02Z",
+            "max_amperage": 16,
+            "max_voltage": 220,
+            "power_type": "AC_3_PHASE",
+            "standard": "IEC_62196_T2",
+            "tariff_ids": [
+              "11"
+            ]
+          },
+          {
+            "format": "SOCKET",
+            "id": "2",
+            "last_updated": "2015-03-18T08:12:01Z",
+            "max_amperage": 16,
+            "max_voltage": 220,
+            "power_type": "AC_3_PHASE",
+            "standard": "IEC_62196_T2",
+            "tariff_ids": [
+              "13"
+            ]
+          }
+        ],
+        "evse_id": "BE*BEC*E041503001",
+        "floor_level": "-1",
+        "last_updated": "2015-06-28T08:12:01Z",
+        "physical_reference": "1",
+        "status": "AVAILABLE",
+        "uid": "3256"
+      },
+      {
+        "capabilities": [
+          "RESERVABLE"
+        ],
+        "connectors": [
+          {
+            "format": "SOCKET",
+            "id": "1",
+            "last_updated": "2015-06-29T20:39:09Z",
+            "max_amperage": 16,
+            "max_voltage": 220,
+            "power_type": "AC_3_PHASE",
+            "standard": "IEC_62196_T2",
+            "tariff_ids": [
+              "12"
+            ]
+          }
+        ],
+        "evse_id": "BE*BEC*E041503002",
+        "floor_level": "-2",
+        "last_updated": "2015-06-29T20:39:09Z",
+        "physical_reference": "2",
+        "status": "RESERVED",
+        "uid": "3257"
+      }
+    ],
+    "id": "LOC1",
+    "last_updated": "2015-06-29T20:39:09Z",
+    "name": "Gent Zuid",
+    "operator": {
+      "name": "BeCharged"
+    },
+    "parking_type": "ON_STREET",
+    "party_id": "BEC",
+    "postal_code": "9000",
+    "publish": true,
+    "time_zone": "Europe/Brussels"
+  },
+  "headers": {
+    "accept": "application/json"
+  },
+  "method": "PUT",
+  "url": {
+    "path": "/locations/{country_code}/{party_id}/{location_id}",
+    "pathParams": {
+      "country_code": "NL",
+      "location_id": "12",
+      "party_id": "TNM"
+    }
+  }
+}

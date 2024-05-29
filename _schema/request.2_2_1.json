@@ -1,0 +1,156 @@
+{
+  "definitions": {
+    "getReceiver": {
+      "else": false,
+      "if": {
+        "$ref": "../common.json#/definitions/routes/receiver/get"
+      }
+    },
+    "put": {
+      "definitions": {
+        "connector": {
+          "properties": {
+            "url": {
+              "properties": {
+                "pathParams": {
+                  "required": [
+                    "connector_id"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "evse": {
+          "else": {
+            "properties": {
+              "body": {
+                "$ref": "./ocpi.2_2_1.location.json#/definitions/EVSE"
+              }
+            }
+          },
+          "if": {
+            "$ref": "#/definitions/put/definitions/connector"
+          },
+          "properties": {
+            "url": {
+              "properties": {
+                "pathParams": {
+                  "required": [
+                    "evse_uid"
+                  ]
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "body": {
+                "$ref": "./ocpi.2_2_1.location.json#/definitions/Connector"
+              }
+            }
+          }
+        },
+        "location": {
+          "else": {
+            "properties": {
+              "body": {
+                "$ref": "./ocpi.2_2_1.location.json"
+              }
+            }
+          },
+          "if": {
+            "$ref": "#/definitions/put/definitions/evse"
+          }
+        }
+      },
+      "else": false,
+      "if": {
+        "$ref": "../common.json#/definitions/routes/receiver/put"
+      },
+      "then": {
+        "$ref": "#/definitions/put/definitions/location"
+      }
+    },
+    "receiverPathParams": {
+      "additionalProperties": false,
+      "properties": {
+        "connector_id": {
+          "maxLength": 36,
+          "minLength": 1,
+          "type": "string"
+        },
+        "country_code": {
+          "$ref": "../common.json#/definitions/country_code"
+        },
+        "evse_uid": {
+          "maxLength": 36,
+          "minLength": 1,
+          "type": "string"
+        },
+        "location_id": {
+          "maxLength": 36,
+          "minLength": 1,
+          "type": "string"
+        },
+        "party_id": {
+          "$ref": "../common.json#/definitions/party_id"
+        }
+      },
+      "required": [
+        "country_code",
+        "party_id",
+        "location_id"
+      ]
+    }
+  },
+  "else": {
+    "oneOf": [
+      {
+        "$ref": "#/definitions/getReceiver"
+      },
+      {
+        "$ref": "#/definitions/put"
+      },
+      {
+        "else": false,
+        "if": {
+          "$ref": "../common.json#/definitions/routes/receiver/patch"
+        },
+        "then": {
+          "properties": {
+            "body": {
+              "$ref": "./ocpi.2_2_1.location.partial.json"
+            }
+          }
+        }
+      }
+    ],
+    "properties": {
+      "url": {
+        "properties": {
+          "pathParams": {
+            "$ref": "#/definitions/receiverPathParams"
+          }
+        },
+        "required": [
+          "pathParams"
+        ]
+      }
+    }
+  },
+  "if": {
+    "$ref": "../common.json#/definitions/routes/sender/get"
+  },
+  "then": {
+    "properties": {
+      "url": {
+        "properties": {
+          "query": {
+            "$ref": "../common.json#/definitions/senderQuery"
+          }
+        }
+      }
+    }
+  }
+}

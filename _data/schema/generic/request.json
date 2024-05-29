@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "body": {
+      "type": "object"
+    },
+    "headers": {
+      "additionalProperties": false,
+      "patternProperties": {
+        "[a-z-0-9_]": {}
+      },
+      "properties": {
+        "accept": {
+          "const": "application/json"
+        }
+      },
+      "type": "object"
+    },
+    "method": {
+      "enum": [
+        "GET",
+        "POST",
+        "PUT",
+        "PATCH",
+        "DELETE"
+      ],
+      "type": "string"
+    },
+    "url": {
+      "additionalProperties": false,
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "pathParams": {
+          "type": "object"
+        },
+        "query": {
+          "type": "object"
+        },
+        "scheme": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "method",
+    "url"
+  ],
+  "type": "object"
+}

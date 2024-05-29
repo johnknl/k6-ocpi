@@ -1,0 +1,14 @@
+{
+  "headers": {
+    "accept": "application/json"
+  },
+  "method": "GET",
+  "url": {
+    "path": "/tariffs/{country_code}/{party_id}/{tariff_id}",
+    "pathParams": {
+      "country_code": "NL",
+      "party_id": "TNM",
+      "tariff_id": "404"
+    }
+  }
+}

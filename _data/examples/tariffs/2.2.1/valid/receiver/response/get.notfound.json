@@ -1,0 +1,26 @@
+{
+  "body": {
+    "status_code": 2000,
+    "timestamp": "2024-05-31T00:00:00Z"
+  },
+  "headers": {
+    "content-type": "application/json",
+    "x-correlation-id": "7654321",
+    "x-request-id": "1234567"
+  },
+  "request": {
+    "headers": {
+      "accept": "application/json"
+    },
+    "method": "GET",
+    "url": {
+      "path": "/tariffs/{country_code}/{party_id}/{tariff_id}",
+      "pathParams": {
+        "country_code": "NL",
+        "party_id": "TNM",
+        "tariff_id": "404"
+      }
+    }
+  },
+  "status": 404
+}

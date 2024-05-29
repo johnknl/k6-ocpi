@@ -1,0 +1,218 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "../generic/response.json"
+    },
+    {
+      "properties": {
+        "additionalProperties": false,
+        "body": {
+          "additionalProperties": false,
+          "properties": {
+            "data": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array"
+                },
+                {
+                  "type": "object"
+                }
+              ]
+            },
+            "status_code": {
+              "exclusiveMaximum": 5000,
+              "minimum": 1000,
+              "type": "integer"
+            },
+            "status_message": {
+              "type": "string"
+            },
+            "timestamp": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status_code",
+            "timestamp"
+          ],
+          "type": "object"
+        },
+        "request": {
+          "$ref": "../generic/request.json#"
+        },
+        "status": {
+          "enum": [
+            200,
+            201,
+            404
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "request",
+        "body"
+      ],
+      "type": "object"
+    },
+    {
+      "if": {
+        "properties": {
+          "request": {
+            "properties": {
+              "method": {
+                "const": "GET"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "enum": [
+              200,
+              404
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              200,
+              201
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "body": {
+            "properties": {
+              "status_code": {
+                "const": 1000
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": 404
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "body": {
+            "oneOf": [
+              {
+                "not": {
+                  "required": [
+                    "data"
+                  ]
+                }
+              },
+              {
+                "properties": {
+                  "data": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "data"
+                ]
+              }
+            ],
+            "properties": {
+              "status_code": {
+                "maximum": 2999,
+                "minimum": 2000
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "request": {
+            "properties": {
+              "method": {
+                "enum": [
+                  "PUT",
+                  "DELETE"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "body": {
+            "oneOf": [
+              {
+                "not": {
+                  "required": [
+                    "data"
+                  ]
+                }
+              },
+              {
+                "properties": {
+                  "data": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "data"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "request": {
+            "properties": {
+              "method": {
+                "not": {
+                  "enum": [
+                    "POST",
+                    "PUT"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "not": {
+              "const": 201
+            }
+          }
+        }
+      }
+    }
+  ]
+}

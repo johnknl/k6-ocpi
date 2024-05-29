@@ -1,0 +1,109 @@
+{
+  "$ref": "#/definitions/ocpi.2_1_1.commands.start_session.request",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "ocpi.2_1_1.commands.start_session.request": {
+      "additionalProperties": false,
+      "properties": {
+        "evse_uid": {
+          "anyOf": [
+            {
+              "maxLength": 39,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "location_id": {
+          "maxLength": 39,
+          "type": "string"
+        },
+        "response_url": {
+          "format": "uri",
+          "type": "string"
+        },
+        "token": {
+          "additionalProperties": false,
+          "properties": {
+            "auth_id": {
+              "maxLength": 36,
+              "type": "string"
+            },
+            "issuer": {
+              "maxLength": 64,
+              "type": "string"
+            },
+            "language": {
+              "anyOf": [
+                {
+                  "maxLength": 2,
+                  "minLength": 2,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "last_updated": {
+              "format": "date-time",
+              "type": "string"
+            },
+            "type": {
+              "enum": [
+                "OTHER",
+                "RFID"
+              ],
+              "type": "string"
+            },
+            "uid": {
+              "maxLength": 36,
+              "type": "string"
+            },
+            "valid": {
+              "type": "boolean"
+            },
+            "visual_number": {
+              "anyOf": [
+                {
+                  "maxLength": 64,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "whitelist": {
+              "enum": [
+                "ALWAYS",
+                "ALLOWED",
+                "ALLOWED_OFFLINE",
+                "NEVER"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "uid",
+            "type",
+            "auth_id",
+            "issuer",
+            "valid",
+            "whitelist",
+            "last_updated"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "response_url",
+        "token",
+        "location_id"
+      ],
+      "type": "object"
+    }
+  }
+}

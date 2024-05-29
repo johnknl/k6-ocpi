@@ -1,0 +1,10 @@
+[
+  "tests/modules/locations/cpo/default.test.js",
+  "tests/modules/locations/emsp/default.test.js",
+  "tests/modules/locations/emsp/get.test.js",
+  "tests/modules/locations/emsp/patch.test.js",
+  "tests/modules/locations/emsp/put.test.js",
+  "tests/modules/locations/emsp/put_stress.test.js",
+  "tests/modules/tariffs/cpo/default.test.js",
+  "tests/modules/tariffs/emsp/default.test.js"
+]

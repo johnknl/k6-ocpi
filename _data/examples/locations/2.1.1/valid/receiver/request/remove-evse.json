@@ -1,0 +1,18 @@
+{
+  "body": {
+    "status": "REMOVED"
+  },
+  "headers": {
+    "accept": "application/json"
+  },
+  "method": "PATCH",
+  "url": {
+    "path": "/locations/{country_code}/{party_id}/{location_id}/{evse_uid}",
+    "pathParams": {
+      "country_code": "NL",
+      "evse_uid": "3257",
+      "location_id": "12",
+      "party_id": "TNM"
+    }
+  }
+}

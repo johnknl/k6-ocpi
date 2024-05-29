@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "accept": "application/json"
+  },
+  "method": "DELETE",
+  "url": {
+    "path": "/tariffs/NL/TNM/12",
+    "pathParams": {
+      "country_code": "NL",
+      "tariff_id": "12"
+    }
+  }
+}

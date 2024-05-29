@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "accept": "application/json"
+  },
+  "method": "GET",
+  "url": {
+    "path": "/tariffs/NL/TNM/12",
+    "pathParams": {
+      "party_id": "TNM",
+      "tariff_id": "12"
+    }
+  }
+}

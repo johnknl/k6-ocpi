@@ -1,0 +1,12 @@
+{
+  "headers": {
+    "accept": "application/json"
+  },
+  "method": "GET",
+  "url": {
+    "path": "/locations",
+    "query": {
+      "date_from": "2024-05-14T00:00:00Z"
+    }
+  }
+}

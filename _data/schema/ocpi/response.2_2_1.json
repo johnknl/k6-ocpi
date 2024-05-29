@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "./response.json"
+    },
+    {
+      "properties": {
+        "headers": {
+          "properties": {
+            "x-correlation-id": {
+              "type": "string"
+            },
+            "x-request-id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "x-request-id",
+            "x-correlation-id"
+          ],
+          "type": "object"
+        }
+      }
+    },
+    {
+      "else": {
+        "properties": {
+          "body": {
+            "properties": {
+              "status_code": {
+                "exclusiveMaximum": 3000,
+                "minimum": 2000
+              }
+            }
+          }
+        }
+      },
+      "if": {
+        "properties": {
+          "request": {
+            "$ref": "./request.2_2_1.json"
+          }
+        }
+      },
+      "then": {
+        "if": {
+          "properties": {
+            "status": {
+              "not": {
+                "const": 404
+              }
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "body": {
+              "properties": {
+                "status_code": {
+                  "not": {
+                    "exclusiveMaximum": 3000,
+                    "minimum": 2000
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "else": {
+        "else": {
+          "properties": {
+            "status": {
+              "const": 404
+            }
+          }
+        },
+        "if": {
+          "properties": {
+            "request": {
+              "properties": {
+                "url": {
+                  "properties": {
+                    "path": {
+                      "pattern": "/locations/?"
+                    }
+                  }
+                }
+              }
+            },
+            "status": {
+              "not": {
+                "const": 404
+              }
+            }
+          }
+        },
+        "then": {
+          "$ref": "./locations/response.2_2_1.json#"
+        }
+      },
+      "if": {
+        "properties": {
+          "request": {
+            "properties": {
+              "url": {
+                "properties": {
+                  "path": {
+                    "pattern": "/tariffs/?"
+                  }
+                }
+              }
+            }
+          },
+          "status": {
+            "not": {
+              "const": 404
+            }
+          }
+        }
+      },
+      "then": {
+        "$ref": "./tariffs/response.2_2_1.json#"
+      }
+    }
+  ]
+}

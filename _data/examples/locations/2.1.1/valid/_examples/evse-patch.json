@@ -1,0 +1,7 @@
+{
+  "capabilities": [
+    "RESERVABLE",
+    "CREDIT_CARD_PAYABLE"
+  ],
+  "status": "CHARGING"
+}

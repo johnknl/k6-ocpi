@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "accept": "application/json"
+  },
+  "method": "GET",
+  "url": {
+    "path": "/locations/{country_code}/{party_id}/{location_id}/{evse_uid}",
+    "pathParams": {
+      "country_code": "NL",
+      "evse_uid": "3256",
+      "location_id": "1",
+      "party_id": "TNM"
+    }
+  }
+}

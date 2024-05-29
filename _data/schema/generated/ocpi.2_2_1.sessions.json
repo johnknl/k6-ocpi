@@ -1,0 +1,268 @@
+{
+  "$ref": "#/definitions/ocpi.2_2_1.sessions",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "ocpi.2_2_1.sessions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "auth_method": {
+            "enum": [
+              "AUTH_REQUEST",
+              "COMMAND",
+              "WHITELIST"
+            ],
+            "type": "string"
+          },
+          "authorization_reference": {
+            "anyOf": [
+              {
+                "maxLength": 36,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cdr_token": {
+            "additionalProperties": false,
+            "properties": {
+              "contract_id": {
+                "maxLength": 36,
+                "type": "string"
+              },
+              "country_code": {
+                "maxLength": 2,
+                "type": "string"
+              },
+              "party_id": {
+                "maxLength": 3,
+                "type": "string"
+              },
+              "type": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "AD_HOC_USER",
+                      "APP_USER",
+                      "OTHER",
+                      "RFID"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "uid": {
+                "maxLength": 36,
+                "type": "string"
+              }
+            },
+            "required": [
+              "uid",
+              "contract_id",
+              "country_code",
+              "party_id"
+            ],
+            "type": "object"
+          },
+          "charging_periods": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "dimensions": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "type": {
+                            "enum": [
+                              "CURRENT",
+                              "ENERGY",
+                              "ENERGY_EXPORT",
+                              "ENERGY_IMPORT",
+                              "MAX_CURRENT",
+                              "MIN_CURRENT",
+                              "MAX_POWER",
+                              "MIN_POWER",
+                              "PARKING_TIME",
+                              "POWER",
+                              "RESERVATION_TIME",
+                              "STATE_OF_CHARGE",
+                              "TIME"
+                            ],
+                            "type": "string"
+                          },
+                          "volume": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "volume"
+                        ],
+                        "type": "object"
+                      },
+                      "minItems": 1,
+                      "type": "array"
+                    },
+                    "start_date_time": {
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "tariff_id": {
+                      "anyOf": [
+                        {
+                          "maxLength": 36,
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "start_date_time",
+                    "dimensions"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "connector_id": {
+            "maxLength": 36,
+            "type": "string"
+          },
+          "country_code": {
+            "maxLength": 2,
+            "minLength": 2,
+            "type": "string"
+          },
+          "currency": {
+            "maxLength": 3,
+            "minLength": 3,
+            "type": "string"
+          },
+          "end_date_time": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evse_uid": {
+            "maxLength": 36,
+            "type": "string"
+          },
+          "id": {
+            "maxLength": 36,
+            "type": "string"
+          },
+          "kwh": {
+            "minimum": 0,
+            "type": "number"
+          },
+          "last_updated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "location_id": {
+            "maxLength": 36,
+            "type": "string"
+          },
+          "meter_id": {
+            "anyOf": [
+              {
+                "maxLength": 255,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "party_id": {
+            "maxLength": 3,
+            "type": "string"
+          },
+          "start_date_time": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "ACTIVE",
+              "COMPLETED",
+              "INVALID",
+              "PENDING",
+              "RESERVATION"
+            ],
+            "type": "string"
+          },
+          "total_cost": {
+            "anyOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "excl_vat": {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "incl_vat": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "excl_vat"
+                ],
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "country_code",
+          "party_id",
+          "id",
+          "start_date_time",
+          "kwh",
+          "cdr_token",
+          "auth_method",
+          "location_id",
+          "evse_uid",
+          "connector_id",
+          "currency",
+          "status",
+          "last_updated"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,951 @@
+{
+  "$ref": "#/definitions/ocpi.2_1_1.tariff.partial",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "ocpi.2_1_1.tariff.partial": {
+      "additionalProperties": false,
+      "properties": {
+        "currency": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "maxLength": 3,
+                  "minLength": 3,
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "elements": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "price_components": {
+                        "anyOf": [
+                          {
+                            "anyOf": [
+                              {
+                                "not": {}
+                              },
+                              {
+                                "items": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "price": {
+                                      "anyOf": [
+                                        {
+                                          "anyOf": [
+                                            {
+                                              "not": {}
+                                            },
+                                            {
+                                              "minimum": 0,
+                                              "type": "number"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "step_size": {
+                                      "anyOf": [
+                                        {
+                                          "anyOf": [
+                                            {
+                                              "not": {}
+                                            },
+                                            {
+                                              "minimum": 0,
+                                              "type": "integer"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "type": {
+                                      "anyOf": [
+                                        {
+                                          "anyOf": [
+                                            {
+                                              "not": {}
+                                            },
+                                            {
+                                              "enum": [
+                                                "ENERGY",
+                                                "FLAT",
+                                                "PARKING_TIME",
+                                                "TIME"
+                                              ],
+                                              "type": "string"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "type": "array"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "restrictions": {
+                        "anyOf": [
+                          {
+                            "anyOf": [
+                              {
+                                "not": {}
+                              },
+                              {
+                                "anyOf": [
+                                  {
+                                    "not": {}
+                                  },
+                                  {
+                                    "anyOf": [
+                                      {
+                                        "additionalProperties": false,
+                                        "properties": {
+                                          "day_of_week": {
+                                            "anyOf": [
+                                              {
+                                                "anyOf": [
+                                                  {
+                                                    "not": {}
+                                                  },
+                                                  {
+                                                    "anyOf": [
+                                                      {
+                                                        "not": {}
+                                                      },
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "enum": [
+                                                              "MONDAY",
+                                                              "TUESDAY",
+                                                              "WEDNESDAY",
+                                                              "THURSDAY",
+                                                              "FRIDAY",
+                                                              "SATURDAY",
+                                                              "SUNDAY"
+                                                            ],
+                                                            "type": "string"
+                                                          },
+                                                          {
+                                                            "type": "null"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "null"
+                                              }
+                                            ]
+                                          },
+                                          "end_date": {
+                                            "anyOf": [
+                                              {
+                                                "anyOf": [
+                                                  {
+                                                    "not": {}
+                                                  },
+                                                  {
+                                                    "anyOf": [
+                                                      {
+                                                        "not": {}
+                                                      },
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "maxLength": 10,
+                                                            "minLength": 10,
+                                                            "type": "string"
+                                                          },
+                                                          {
+                                                            "type": "null"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "null"
+                                              }
+                                            ]
+                                          },
+                                          "end_time": {
+                                            "anyOf": [
+                                              {
+                                                "anyOf": [
+                                                  {
+                                                    "not": {}
+                                                  },
+                                                  {
+                                                    "anyOf": [
+                                                      {
+                                                        "not": {}
+                                                      },
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "maxLength": 5,
+                                                            "minLength": 5,
+                                                            "pattern": "[0-2][0-9]:[0-5][0-9]",
+                                                            "type": "string"
+                                                          },
+                                                          {
+                                                            "type": "null"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "null"
+                                              }
+                                            ]
+                                          },
+                                          "max_duration": {
+                                            "anyOf": [
+                                              {
+                                                "anyOf": [
+                                                  {
+                                                    "not": {}
+                                                  },
+                                                  {
+                                                    "anyOf": [
+                                                      {
+                                                        "not": {}
+                                                      },
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "minimum": 0,
+                                                            "type": "number"
+                                                          },
+                                                          {
+                                                            "type": "null"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "null"
+                                              }
+                                            ]
+                                          },
+                                          "max_kwh": {
+                                            "anyOf": [
+                                              {
+                                                "anyOf": [
+                                                  {
+                                                    "not": {}
+                                                  },
+                                                  {
+                                                    "anyOf": [
+                                                      {
+                                                        "not": {}
+                                                      },
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "minimum": 0,
+                                                            "type": "number"
+                                                          },
+                                                          {
+                                                            "type": "null"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "null"
+                                              }
+                                            ]
+                                          },
+                                          "max_power": {
+                                            "anyOf": [
+                                              {
+                                                "anyOf": [
+                                                  {
+                                                    "not": {}
+                                                  },
+                                                  {
+                                                    "anyOf": [
+                                                      {
+                                                        "not": {}
+                                                      },
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "minimum": 0,
+                                                            "type": "number"
+                                                          },
+                                                          {
+                                                            "type": "null"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "null"
+                                              }
+                                            ]
+                                          },
+                                          "min_duration": {
+                                            "anyOf": [
+                                              {
+                                                "anyOf": [
+                                                  {
+                                                    "not": {}
+                                                  },
+                                                  {
+                                                    "anyOf": [
+                                                      {
+                                                        "not": {}
+                                                      },
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "minimum": 0,
+                                                            "type": "number"
+                                                          },
+                                                          {
+                                                            "type": "null"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "null"
+                                              }
+                                            ]
+                                          },
+                                          "min_kwh": {
+                                            "anyOf": [
+                                              {
+                                                "anyOf": [
+                                                  {
+                                                    "not": {}
+                                                  },
+                                                  {
+                                                    "anyOf": [
+                                                      {
+                                                        "not": {}
+                                                      },
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "minimum": 0,
+                                                            "type": "number"
+                                                          },
+                                                          {
+                                                            "type": "null"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "null"
+                                              }
+                                            ]
+                                          },
+                                          "min_power": {
+                                            "anyOf": [
+                                              {
+                                                "anyOf": [
+                                                  {
+                                                    "not": {}
+                                                  },
+                                                  {
+                                                    "anyOf": [
+                                                      {
+                                                        "not": {}
+                                                      },
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "minimum": 0,
+                                                            "type": "number"
+                                                          },
+                                                          {
+                                                            "type": "null"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "null"
+                                              }
+                                            ]
+                                          },
+                                          "start_date": {
+                                            "anyOf": [
+                                              {
+                                                "anyOf": [
+                                                  {
+                                                    "not": {}
+                                                  },
+                                                  {
+                                                    "anyOf": [
+                                                      {
+                                                        "not": {}
+                                                      },
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "maxLength": 10,
+                                                            "minLength": 10,
+                                                            "type": "string"
+                                                          },
+                                                          {
+                                                            "type": "null"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "null"
+                                              }
+                                            ]
+                                          },
+                                          "start_time": {
+                                            "anyOf": [
+                                              {
+                                                "anyOf": [
+                                                  {
+                                                    "not": {}
+                                                  },
+                                                  {
+                                                    "anyOf": [
+                                                      {
+                                                        "not": {}
+                                                      },
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "maxLength": 5,
+                                                            "minLength": 5,
+                                                            "pattern": "[0-2][0-9]:[0-5][0-9]",
+                                                            "type": "string"
+                                                          },
+                                                          {
+                                                            "type": "null"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "null"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "type": "object"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "energy_mix": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "anyOf": [
+                    {
+                      "not": {}
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "energy_product_name": {
+                              "anyOf": [
+                                {
+                                  "anyOf": [
+                                    {
+                                      "not": {}
+                                    },
+                                    {
+                                      "anyOf": [
+                                        {
+                                          "not": {}
+                                        },
+                                        {
+                                          "anyOf": [
+                                            {
+                                              "maxLength": 64,
+                                              "type": "string"
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "energy_sources": {
+                              "anyOf": [
+                                {
+                                  "anyOf": [
+                                    {
+                                      "not": {}
+                                    },
+                                    {
+                                      "anyOf": [
+                                        {
+                                          "not": {}
+                                        },
+                                        {
+                                          "anyOf": [
+                                            {
+                                              "items": {
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                  "percentage": {
+                                                    "anyOf": [
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "not": {}
+                                                          },
+                                                          {
+                                                            "maximum": 100,
+                                                            "minimum": 0,
+                                                            "type": "number"
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "type": "null"
+                                                      }
+                                                    ]
+                                                  },
+                                                  "source": {
+                                                    "anyOf": [
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "not": {}
+                                                          },
+                                                          {
+                                                            "enum": [
+                                                              "NUCLEAR",
+                                                              "GENERAL_FOSSIL",
+                                                              "COAL",
+                                                              "GAS",
+                                                              "GENERAL_GREEN",
+                                                              "SOLAR",
+                                                              "WIND",
+                                                              "WATER"
+                                                            ],
+                                                            "type": "string"
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "type": "null"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "type": "object"
+                                              },
+                                              "type": "array"
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "environ_impact": {
+                              "anyOf": [
+                                {
+                                  "anyOf": [
+                                    {
+                                      "not": {}
+                                    },
+                                    {
+                                      "anyOf": [
+                                        {
+                                          "not": {}
+                                        },
+                                        {
+                                          "anyOf": [
+                                            {
+                                              "items": {
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                  "amount": {
+                                                    "anyOf": [
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "not": {}
+                                                          },
+                                                          {
+                                                            "type": "number"
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "type": "null"
+                                                      }
+                                                    ]
+                                                  },
+                                                  "source": {
+                                                    "anyOf": [
+                                                      {
+                                                        "anyOf": [
+                                                          {
+                                                            "not": {}
+                                                          },
+                                                          {
+                                                            "enum": [
+                                                              "NUCLEAR_WASTE",
+                                                              "CARBON_DIOXIDE"
+                                                            ],
+                                                            "type": "string"
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "type": "null"
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "type": "object"
+                                              },
+                                              "type": "array"
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "is_green_energy": {
+                              "anyOf": [
+                                {
+                                  "anyOf": [
+                                    {
+                                      "not": {}
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "supplier_name": {
+                              "anyOf": [
+                                {
+                                  "anyOf": [
+                                    {
+                                      "not": {}
+                                    },
+                                    {
+                                      "anyOf": [
+                                        {
+                                          "not": {}
+                                        },
+                                        {
+                                          "anyOf": [
+                                            {
+                                              "maxLength": 64,
+                                              "type": "string"
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "type": "object"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "id": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "maxLength": 36,
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "last_updated": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "format": "date-time",
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tariff_alt_text": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "anyOf": [
+                    {
+                      "not": {}
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "language": {
+                                "anyOf": [
+                                  {
+                                    "anyOf": [
+                                      {
+                                        "not": {}
+                                      },
+                                      {
+                                        "maxLength": 2,
+                                        "minLength": 2,
+                                        "type": "string"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "text": {
+                                "anyOf": [
+                                  {
+                                    "anyOf": [
+                                      {
+                                        "not": {}
+                                      },
+                                      {
+                                        "maxLength": 512,
+                                        "type": "string"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tariff_alt_url": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "anyOf": [
+                    {
+                      "not": {}
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    }
+  }
+}

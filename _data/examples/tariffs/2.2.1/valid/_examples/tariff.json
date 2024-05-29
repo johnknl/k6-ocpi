@@ -1,0 +1,19 @@
+{
+  "country_code": "DE",
+  "currency": "EUR",
+  "elements": [
+    {
+      "price_components": [
+        {
+          "price": 2,
+          "step_size": 300,
+          "type": "TIME",
+          "vat": 10
+        }
+      ]
+    }
+  ],
+  "id": "12",
+  "last_updated": "2024-05-31T00:00:00Z",
+  "party_id": "ALL"
+}

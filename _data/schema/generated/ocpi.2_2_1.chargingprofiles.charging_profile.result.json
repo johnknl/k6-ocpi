@@ -1,0 +1,23 @@
+{
+  "$ref": "#/definitions/ocpi.2_2_1.chargingprofiles.charging_profile.result",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "ocpi.2_2_1.chargingprofiles.charging_profile.result": {
+      "additionalProperties": false,
+      "properties": {
+        "result": {
+          "enum": [
+            "ACCEPTED",
+            "REJECTED",
+            "UNKNOWN"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "result"
+      ],
+      "type": "object"
+    }
+  }
+}

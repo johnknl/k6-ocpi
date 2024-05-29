@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "accept": "application/json"
+  },
+  "method": "GET",
+  "url": {
+    "path": "/tariffs",
+    "query": {
+      "date_from": "2024-01-01T00:00:00Z",
+      "date_to": "2024-03-01T00:00:00Z"
+    }
+  }
+}

@@ -1,0 +1,373 @@
+{
+  "$ref": "#/definitions/ocpi.2_1_1.tariff",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "ocpi.2_1_1.tariff": {
+      "additionalProperties": false,
+      "properties": {
+        "currency": {
+          "maxLength": 3,
+          "minLength": 3,
+          "type": "string"
+        },
+        "elements": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "price_components": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "price": {
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "step_size": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "type": {
+                      "enum": [
+                        "ENERGY",
+                        "FLAT",
+                        "PARKING_TIME",
+                        "TIME"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "price",
+                    "step_size"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 1,
+                "type": "array"
+              },
+              "restrictions": {
+                "anyOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "day_of_week": {
+                        "anyOf": [
+                          {
+                            "enum": [
+                              "MONDAY",
+                              "TUESDAY",
+                              "WEDNESDAY",
+                              "THURSDAY",
+                              "FRIDAY",
+                              "SATURDAY",
+                              "SUNDAY"
+                            ],
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "end_date": {
+                        "anyOf": [
+                          {
+                            "maxLength": 10,
+                            "minLength": 10,
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "end_time": {
+                        "anyOf": [
+                          {
+                            "maxLength": 5,
+                            "minLength": 5,
+                            "pattern": "[0-2][0-9]:[0-5][0-9]",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "max_duration": {
+                        "anyOf": [
+                          {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "max_kwh": {
+                        "anyOf": [
+                          {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "max_power": {
+                        "anyOf": [
+                          {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "min_duration": {
+                        "anyOf": [
+                          {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "min_kwh": {
+                        "anyOf": [
+                          {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "min_power": {
+                        "anyOf": [
+                          {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "start_date": {
+                        "anyOf": [
+                          {
+                            "maxLength": 10,
+                            "minLength": 10,
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "start_time": {
+                        "anyOf": [
+                          {
+                            "maxLength": 5,
+                            "minLength": 5,
+                            "pattern": "[0-2][0-9]:[0-5][0-9]",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "price_components"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "energy_mix": {
+          "anyOf": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "energy_product_name": {
+                  "anyOf": [
+                    {
+                      "maxLength": 64,
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "energy_sources": {
+                  "anyOf": [
+                    {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "percentage": {
+                            "maximum": 100,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "source": {
+                            "enum": [
+                              "NUCLEAR",
+                              "GENERAL_FOSSIL",
+                              "COAL",
+                              "GAS",
+                              "GENERAL_GREEN",
+                              "SOLAR",
+                              "WIND",
+                              "WATER"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "source",
+                          "percentage"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "environ_impact": {
+                  "anyOf": [
+                    {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "amount": {
+                            "type": "number"
+                          },
+                          "source": {
+                            "enum": [
+                              "NUCLEAR_WASTE",
+                              "CARBON_DIOXIDE"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "source",
+                          "amount"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "is_green_energy": {
+                  "type": "boolean"
+                },
+                "supplier_name": {
+                  "anyOf": [
+                    {
+                      "maxLength": 64,
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "is_green_energy"
+              ],
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "id": {
+          "maxLength": 36,
+          "type": "string"
+        },
+        "last_updated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "tariff_alt_text": {
+          "anyOf": [
+            {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "language": {
+                    "maxLength": 2,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  "text": {
+                    "maxLength": 512,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "language",
+                  "text"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tariff_alt_url": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "currency",
+        "elements",
+        "last_updated"
+      ],
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "$ref": "#/definitions/ocpi.2_2_1.commands.reserve_now.request",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "ocpi.2_2_1.commands.reserve_now.request": {
+      "additionalProperties": false,
+      "properties": {
+        "authorization_reference": {
+          "anyOf": [
+            {
+              "maxLength": 36,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evse_uid": {
+          "anyOf": [
+            {
+              "maxLength": 36,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expiry_date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "location_id": {
+          "maxLength": 36,
+          "type": "string"
+        },
+        "reservation_id": {
+          "maxLength": 36,
+          "type": "string"
+        },
+        "response_url": {
+          "format": "uri",
+          "type": "string"
+        },
+        "token": {
+          "additionalProperties": false,
+          "properties": {
+            "contract_id": {
+              "maxLength": 36,
+              "type": "string"
+            },
+            "country_code": {
+              "maxLength": 2,
+              "minLength": 2,
+              "type": "string"
+            },
+            "default_profile_type": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "CHEAP",
+                    "FAST",
+                    "GREEN",
+                    "REGULAR"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "energy_contract": {
+              "anyOf": [
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "contract_id": {
+                      "anyOf": [
+                        {
+                          "maxLength": 64,
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "supplier_name": {
+                      "maxLength": 64,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "supplier_name"
+                  ],
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "group_id": {
+              "anyOf": [
+                {
+                  "maxLength": 36,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "issuer": {
+              "maxLength": 64,
+              "type": "string"
+            },
+            "language": {
+              "anyOf": [
+                {
+                  "maxLength": 2,
+                  "minLength": 2,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "last_updated": {
+              "format": "date-time",
+              "type": "string"
+            },
+            "party_id": {
+              "maxLength": 3,
+              "type": "string"
+            },
+            "type": {
+              "enum": [
+                "AD_HOC_USER",
+                "APP_USER",
+                "OTHER",
+                "RFID"
+              ],
+              "type": "string"
+            },
+            "uid": {
+              "maxLength": 36,
+              "type": "string"
+            },
+            "valid": {
+              "type": "boolean"
+            },
+            "visual_number": {
+              "anyOf": [
+                {
+                  "maxLength": 64,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "whitelist": {
+              "enum": [
+                "ALWAYS",
+                "ALLOWED",
+                "ALLOWED_OFFLINE",
+                "NEVER"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "country_code",
+            "party_id",
+            "uid",
+            "type",
+            "contract_id",
+            "issuer",
+            "valid",
+            "whitelist",
+            "last_updated"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "response_url",
+        "token",
+        "expiry_date",
+        "reservation_id",
+        "location_id"
+      ],
+      "type": "object"
+    }
+  }
+}
